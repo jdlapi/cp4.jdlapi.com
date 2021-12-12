@@ -3,11 +3,11 @@
   <div class="header">
     <router-link to="/">
       <div class="logo">
-        <img src="/ordinary.png">
+        <img src="/movie.png">
       </div>
     </router-link>
     <div class="title">
-      <h1>Museum of Ordinary Objects</h1>
+      <h1>Justin's Movie Reviews</h1>
     </div>
   </div>
   <div class="content">
@@ -16,7 +16,7 @@
   <div class="footer">
     <router-link to="/admin">Admin</router-link>
     <p>Justin Lapicola</p>
-    <a href="https://github.com/BYUCS260/museum-jdlapi.git">github repository</a>
+    <a href="https://github.com/jdlapi/cp4.jdlapi.com.git">github repository</a>
   </div>
 </div>
 </template>
@@ -29,17 +29,19 @@ html {
 body {
   font-family: 'Montserrat', sans-serif;
   font-size: 16px;
-  background: #fff;
+  background: ##AD8680;
   padding: 0px;
   margin: 0px;
 }
 
 /* Header */
+
 .header {
   display: flex;
   padding: 10px 100px 0px 100px;
-  background-color: #5BDEFF;
-  color: #1C454F;
+  background-color: #8C2515;
+  color: #000;
+  border-style: solid;
 }
 
 .title {

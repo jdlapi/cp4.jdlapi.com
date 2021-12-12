@@ -1,49 +1,47 @@
 <template>
-<div class="admin">
-  <h1>The Admin Page!</h1>
-  <div class="heading">
-      <div class="circle">1</div>
-      <h2>Add an Item</h2>
-    </div>
-    <div class="add">
-      <div class="form">
-        <input v-model="title" placeholder="Title">
-        <p></p>
-        <textarea v-model="description" placeholder="Description" rows="5" cols="50" ></textarea>
-        <p></p>
-        <input type="file" name="photo" @change="fileChanged">
-        <button @click="upload">Upload</button>
-      </div>
-      <div class="upload" v-if="addItem">
-        <h2>{{addItem.title}}</h2>
-        <img :src="addItem.path" />
-        <h3>{{addItem.description}}</h3>
-      </div>
-    </div>
-    <div class="heading">
-      <div class="circle">2</div>
-      <h2>Edit/Delete an Item</h2>
-    </div>
-    <div class="edit">
-      <div class="form">
-          <input v-model="findTitle" placeholder="Search">
-        <div class="suggestions" v-if="suggestions.length > 0">
-          <div class="suggestion" v-for="s in suggestions" :key="s.id" @click="selectItem(s)">{{s.title}}
+  <div class="admin">
+    <h1>Justin's control center:</h1>
+      <div class="forms">
+        <div class="add">
+          <div class="heading">
+            <h2>Add Film Review:</h2>
           </div>
-        </div>
-      </div>
-      <div class="upload" v-if="findItem">
-        <div class = "action-container">
-          <input v-model="findItem.title">
-          <div class="actions" v-if="findItem">
-            <button @click="deleteItem(findItem)">Delete</button>
-            <button @click="editItem(findItem)">Edit</button>
+          <div class="form">
+            <input v-model="title" placeholder="Title">
+            <p></p>
+            <textarea v-model="description" placeholder="Review" rows="5" cols="50" ></textarea>
+            <p></p>
+            <input type="file" name="photo" @change="fileChanged">
+            <button @click="upload">Upload</button>
           </div>
+          <div class="itemAdded" v-if="addItem">
+            <h2>Added review for {{addItem.title}}</h2>
+          </div>
+    </div>
+      <div class="edit">
+      <div class="heading">
+        <h2>Edit Film Review:</h2>
+      </div>
+        <div class="form">
+            <input v-model="findTitle" placeholder="Find Film">
+          <div class="suggestions" v-if="suggestions.length > 0">
+            <div class="suggestion" v-for="s in suggestions" :key="s.id" @click="selectItem(s)">{{s.title}}
+            </div>
+          </div>
+          <p></p>
         </div>
-        <p></p>
-        <textarea v-model="findItem.description" rows="5" cols="50" ></textarea>
-        <p></p>
-        <img :src="findItem.path" />
+        <div class="upload" v-if="findItem">
+          <div class = "action-container">
+            <input v-model="findItem.title">
+            <div class="actions" v-if="findItem">
+              <button @click="deleteItem(findItem)">Delete</button>
+              <button @click="editItem(findItem)">Edit</button>
+            </div>
+          </div>
+          <p></p>
+          <textarea v-model="findItem.description" rows="5" cols="50" ></textarea>
+          <p></p>
+        </div>
       </div>
     </div>
 </div>
@@ -138,6 +136,11 @@ export default {
   font-size: 1em;
 }
 
+.forms {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .heading {
   display: flex;
   margin-bottom: 20px;
@@ -147,11 +150,6 @@ export default {
 .heading h2 {
   margin-top: 8px;
   margin-left: 10px;
-}
-
-.add,
-.edit {
-  display: flex;
 }
 
 .circle {
